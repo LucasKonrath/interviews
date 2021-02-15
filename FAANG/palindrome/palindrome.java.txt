@@ -1,0 +1,22 @@
+class Solution {
+    /**
+     * Replace the input with a lowercase and alphanumeric form, then use a two pointer technique to traverse it. First
+     * pointer equals floor of length divided by 2.
+     */
+    public boolean isPalindrome(String s) {
+
+        s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        
+        int leftPointer = (s.length() / 2) - 1;
+        int rightPointer = s.length() - leftPointer - 1;
+
+        while (leftPointer >= 0 && rightPointer < s.length()) {
+            if (s.charAt(leftPointer) != s.charAt(rightPointer)) {
+                return false;
+            }
+            leftPointer--;
+            rightPointer++;
+        }
+        return true;
+    }
+}

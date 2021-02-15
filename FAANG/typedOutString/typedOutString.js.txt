@@ -1,0 +1,50 @@
+/**
+ * @param {string} S
+ * @param {string} T
+ * @return {boolean}
+ */
+var backspaceCompare = function(S, T) {
+    
+    if(S.length == 0){
+        if(T.length == 0)
+            return true;
+    }
+    
+    let pointerOne = S.length - 1;
+    let pointerTwo = T.length - 1;
+    
+    while(pointerOne >= 0 && pointerTwo >= 0){
+        if(S[pointerOne] === "#" || T[pointerTwo === "#"]){
+            if(S[pointerOne] === "#"){
+                let goBack = 2;
+                while(goBack > 0){
+                    pointerOne--;
+                    goBack--;
+                    
+                    if(S[pointerOne] === "#")
+                        goBack+=2;
+                }
+            }
+            
+          if(T[pointerTwo] === "#"){
+                let goBack = 2;
+                while(goBack > 0){
+                    pointerTwo--;
+                    goBack--;
+                    
+                    if(T[pointerTwo] === "#")
+                        goBack+=2;
+                }
+            }
+        }else{
+            if(S[pointerOne] !== T[pointerTwo]){
+                return false;
+            } else{
+                pointerOne--;
+                pointerTwo--;
+            }
+        }
+    }
+    
+    return true;
+};

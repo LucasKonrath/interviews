@@ -1,0 +1,21 @@
+class Solution {
+    /**
+     * Im searching to see if two numbers match to a specific value, and then I return their indices. So, for each of
+     * the numbers, I save their corresponding expected other number so that they meet their sum.
+     */
+    public int[] twoSum(final int[] nums, final int target) {
+        final HashMap<Integer, Integer> mapOfSums = new HashMap<>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            
+            if (mapOfSums.get(nums[i]) != null) {
+                return new int[]{mapOfSums.get(nums[i]), i};
+            } else {
+                final int keyToSave = target - nums[i];
+                mapOfSums.put(keyToSave, i);
+            }
+        }
+
+        return new int[]{};
+    }
+}

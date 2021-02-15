@@ -1,0 +1,29 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    
+    if(s.length === 0)
+        return 0;
+    
+    let charIndicesMap = new Map();
+    let maximumSize = 0;
+    
+    for(let pointer = 0; pointer < s.length; pointer++){
+        if(charIndicesMap.get(s[pointer]) >= 0){
+            
+            let lengthBetweenChars = pointer - charIndicesMap.get(s[pointer]) - 1;
+            charIndicesMap.set(s[pointer], pointer);
+            
+            if(lengthBetweenChars > maximumSize){
+                maximumSize = lengthBetweenChars;
+            }
+        } else {
+            maximumSize++;
+            charIndicesMap.set(s[pointer], pointer);
+        }
+    }
+    
+    return maximumSize;
+};

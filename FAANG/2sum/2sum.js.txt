@@ -1,0 +1,17 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    
+    const diffMap = new Map();
+    
+    for(let i = 0; i < nums.length; i++){
+        if(diffMap.get(nums[i])  === undefined){
+            diffMap.set(target - nums[i], i)
+        } else {
+            return [diffMap.get(nums[i]), i];
+        }
+    }
+};
